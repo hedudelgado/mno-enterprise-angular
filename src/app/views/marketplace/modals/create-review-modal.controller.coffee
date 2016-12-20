@@ -5,6 +5,7 @@ angular.module 'mnoEnterpriseAngular'
   vm.modal = {model: {}}
   vm.appRating = 5
   vm.app = {}
+  vm.hasClicked = $scope.hasClicked
 
   vm.modal.cancel = ->
     $uibModalInstance.dismiss('cancel')
