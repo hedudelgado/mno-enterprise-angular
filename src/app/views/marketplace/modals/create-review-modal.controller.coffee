@@ -5,7 +5,6 @@ angular.module 'mnoEnterpriseAngular'
   vm.modal = {model: {}}
   vm.appRating = 5
   vm.app = {}
-  vm.hasClicked = $scope.hasClicked
 
   vm.modal.cancel = ->
     $uibModalInstance.dismiss('cancel')
@@ -23,7 +22,7 @@ angular.module 'mnoEnterpriseAngular'
         $uibModalInstance.close(response)
       (errors) ->
         vm.modal.errors = Utilities.processRailsError(errors)
-    ).finally(-> $scope.modal.isLoading = false)
+    ).finally(-> vm.modal.isLoading = false)
 
   return
 )
