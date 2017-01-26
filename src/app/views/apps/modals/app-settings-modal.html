@@ -38,8 +38,7 @@
             {{ 'mno_enterprise.templates.impac.dock.settings.free_trial' | translate }}: {{ app.free_trial_end_at }}
         </div>
         <div ng-show="!app.free_trial_end_at && app.per_user_licence">
-          <ng-pluralize count="app.licences_count" when="{'0': '{{ &quot;mno_enterprise.templates.impac.dock.settings.no_users&quot; | translate }}', '1': '{{ &quot;mno_enterprise.templates.impac.dock.settings.1_user&quot; | translate }}', 'other': '{{app.licences_count | number}} {{ &quot;mno_enterprise.templates.impac.dock.settings.users&quot; | translate }}'}"
-             tooltip-placement="bottom" uib-tooltip="{{ 'mno_enterprise.templates.impac.dock.settings.number_of_people_tooltip' | translate:{ appname: app.name} }}"></ng-pluralize>
+          <p translate="mno_enterprise.templates.impac.dock.settings.nb_of_users" translate-values="{ num_users: app.licences_count }" translate-interpolation="messageformat"></p>
         </div>
         <div ng-show="!app.app.free_trial_end_at  && !app.per_user_licence">{{ 'mno_enterprise.templates.impac.dock.settings.pricing_details' | translate }}</div>
       </div>
