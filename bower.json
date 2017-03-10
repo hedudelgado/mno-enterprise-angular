@@ -51,8 +51,13 @@
     "moment": {
       "main": [
         "moment.js",
-        "locale/*.js"
+        "locale/id.js"
+        "locale/zh-cn.js"
       ]
     }
   },
+  "resolutions": {
+    "angular": ">=1.2.0 <1.7.0",
+    "angular-translate": "~2.15.1"
+  }
 }

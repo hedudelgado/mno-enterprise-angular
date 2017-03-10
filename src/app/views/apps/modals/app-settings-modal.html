@@ -35,7 +35,7 @@
       <div ng-show="helper.canDisplayBilling()">
         <hr>
         <div ng-show="!!app.free_trial_end_at">
-            {{ 'mno_enterprise.templates.impac.dock.settings.free_trial' | translate }}: {{ app.free_trial_end_at }}
+            {{ 'mno_enterprise.templates.impac.dock.settings.free_trial' | translate }}: {{ app.free_trial_end_at_humanized }}
         </div>
         <div ng-show="!app.free_trial_end_at && app.per_user_licence">
           <p translate="mno_enterprise.templates.impac.dock.settings.nb_of_users" translate-values="{ num_users: app.licences_count }" translate-interpolation="messageformat"></p>
