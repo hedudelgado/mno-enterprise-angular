@@ -1,0 +1,89 @@
+<div class="data-sync-panel">
+  <!-- Header -->
+  <div class="data-sync-wrap" ng-show="!vm.isLoading">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="data-sync-info">
+          <div ng-show="!isPanelShown">
+              <h3>{{'mno_enterprise.templates.onboarding.data_sync.what_data' | translate}}</h3>
+              {{'mno_enterprise.templates.onboarding.data_sync.start' | translate}}
+             
+              <p class="text-muted">
+                {{'mno_enterprise.templates.onboarding.data_sync.learn_more' | translate}}
+              </p>
+          </div>
+          <div ng-show="isPanelShown">
+            <table class="data-sync-table table table-bordered">
+              <tr>
+                <th></th>
+                <td ng-repeat="app in appsData | limitTo:4"><img class="media-object" ng-src="{{app.logo}}" alt="{{app.name}}"></td>
+              </tr>
+              <tr>
+                <th class="col-xs-1">Contacts</th>
+                <td ng-repeat="app in appsData | limitTo:4">
+                <!-- inside the ng-show we will evaluate if the app share this data or not to display the glyphicon once I now how the data comes along with the app -->
+                  <div ng-show="true">
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </div>
+                  <div ng-show="false">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </div>
+                </a></td>
+              </tr>
+              <tr>
+                <th class="col-xs-1">Invoices</th>
+                <td ng-repeat="app in appsData | limitTo:4">
+                <!-- inside the ng-show we will evaluate if the app share this data or not to display the glyphicon once I now how the data comes along with the app -->
+                  <div ng-show="true">
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </div>
+                  <div ng-show="false">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="col-xs-1">Journals</th>
+                <td ng-repeat="app in appsData | limitTo:4">
+                <!-- inside the ng-show we will evaluate if the app share this data or not to display the glyphicon once I now how the data comes along with the app -->
+                  <div ng-show="true">
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </div>
+                  <div ng-show="false">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="col-xs-1">Employess</th>
+                <td ng-repeat="app in appsData | limitTo:4">
+                <!-- inside the ng-show we will evaluate if the app share this data or not to display the glyphicon once I now how the data comes along with the app -->
+                  <div ng-show="false">
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </div>
+                  <div ng-show="true">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+              <tr>
+                <th class="col-xs-1">Opportunities</th>
+                <td ng-repeat="app in appsData | limitTo:4">
+                <!-- inside the ng-show we will evaluate if the app share this data or not to display the glyphicon once I now how the data comes along with the app -->
+                  <div ng-show="false">
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </div>
+                  <div ng-show="true">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

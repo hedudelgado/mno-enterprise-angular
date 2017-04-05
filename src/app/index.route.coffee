@@ -68,6 +68,13 @@ angular.module 'mnoEnterpriseAngular'
             templateUrl: 'app/views/marketplace/marketplace-app.html'
             controller: 'DashboardMarketplaceAppCtrl'
             controllerAs: 'vm'
+        .state 'onboarding',
+          data:
+            pageTitle:'Onboarding'
+          url: '/onboarding'
+          templateUrl: 'app/views/onboarding/onboarding.html'
+          controller: 'OnboardingCtrl'
+          controllerAs: 'vm'
         .state 'home.marketplace.compare',
           data:
             pageTitle:'Compare apps'
@@ -77,4 +84,19 @@ angular.module 'mnoEnterpriseAngular'
             controller: 'DashboardMarketplaceCompareCtrl'
             controllerAs: 'vm'
 
-    $urlRouterProvider.otherwise '/impac'
+    # $urlRouterProvider.otherwise '/impac'
+    
+    # TO DELETE
+    $urlRouterProvider.otherwise '/onboarding'
+
+
+    # TODO
+    # if WIZARD_CONFIG.enabled
+      # $stateProvider
+      #   .state 'onboarding',
+      #     data:
+      #       pageTitle:'Onboarding'
+      #     url: '/onboarding'
+      #     templateUrl: 'app/views/onboarding/onboarding.html'
+
+    #     $urlRouterProvider.otherwise '/onboarding'
