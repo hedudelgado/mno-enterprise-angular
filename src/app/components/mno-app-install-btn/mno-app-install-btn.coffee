@@ -41,7 +41,11 @@ angular.module 'mnoEnterpriseAngular'
 
         purchasePromise.then(
           ->
-            $state.go('home.impac')
+            # TODO if wizard enabled and this is trigger from the slider we do not redirect to impac'
+            if true
+
+            else
+              $state.go('home.impac')
 
             switch vm.app.stack
               when 'cloud' then displayLaunchToastr(vm.app)
@@ -51,7 +55,15 @@ angular.module 'mnoEnterpriseAngular'
                   displayLaunchToastr(vm.app)
                 else
                   displayConnectToastr(vm.app)
-        ).finally(-> vm.isLoadingButton = false)
+        ).finally(->
+          vm.isLoadingButton = false
+
+          # TODO if wizard enabled and this is trigger from the slider we do not redirect to impac'
+          if true
+            openConnectAppModal()
+
+            console.log('if wizard enabled and this is trigger from the slider we do not redirect to impac')
+            )
 
       displayLaunchToastr = (app) ->
         toastr.success(
@@ -65,6 +77,18 @@ angular.module 'mnoEnterpriseAngular'
           'mno_enterprise.templates.components.app_install_btn.success_connect_notification_body',
           'mno_enterprise.templates.components.app_install_btn.success_notification_title',
           {extraData: {name: app.name}, timeout: 10000}
+        )
+
+      openConnectAppModal = () ->
+        vm.showConnectButtons = true
+        $uibModal.open(
+          templateUrl: 'app/views/onboarding/modals/mno-app-info.html'
+          controller: 'MnoAppInfoCtrl'
+          controllerAs: 'vm',
+          size: 'lg'
+          resolve:
+            showConnectButtons: vm.showConnectButtons
+            app: vm.app
         )
 
       openChooseOrgaModal = () ->

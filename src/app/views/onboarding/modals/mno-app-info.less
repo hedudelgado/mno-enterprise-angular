@@ -6,16 +6,40 @@
   //-------------------------------
   // Header
   //-------------------------------
-  .show-header .media-object {
+  .row-header .media-object {
     max-width: 80px;
     border-radius: 5px;
-    border: solid 1px darken(@bg-main-color, 5%);
-    margin-left: 350px;
+    border: solid 1px @bg-main-color;
+    margin-left: 28px;
   }
 
-  .show-header .media-body h2 {
+  .row-header .media-body h2 {
     line-height: 80px;
     color: @dashboard-marketplace-show-header-text-color;
+  }
+  .col-lg-6 {
+    float: left;
+    width: 80%;
+    min-height: 200px;
+  }
+  .col-lg-3 {
+    width: 20%;
+    float: right;
+    // margin-top: 30px;
+  }
+
+  a {
+    color: @text-inverse-strong-color;
+  }
+
+  .col-lg-4 {
+    width: 20%;
+    float: right;
+    margin-bottom: 20px;
+  }
+
+  .col-md-12 {
+    width: 150%;
   }
 
   blockquote {
@@ -25,7 +49,7 @@
   //-------------------------------
   // Content - General
   //-------------------------------
-  .show-content .well {
+  .row-content .well {
     color: @dashboard-marketplace-show-sections-text-color;
     background-color: @dashboard-marketplace-show-sections-bg-color;
     border: none;

@@ -19,5 +19,6 @@ angular.module 'mnoEnterpriseAngular', [
   'maestrano.impac',
   'ngPageTitle',
   'angularMoment',
-  'mgo-angular-wizard'
+  'mgo-angular-wizard',
+   'mnoUiElements'
 ]

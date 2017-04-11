@@ -1,0 +1,35 @@
+<div class="connect-apps-panel">
+  <!-- Header -->
+  <div class="connect-apps-wrap">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="connect-apps-table table table-bordered">
+          <tr>
+            <td ng-repeat="app in apps | limitTo:4">
+            <div class='text-center'>
+              <h4>{{app.name}}</h4>
+            </div>
+            <img class="media-object" ng-src="{{app.logo}}" alt="{{app.name}}"></td>
+          </tr>
+          <tr>
+            <td ng-repeat="app in apps | limitTo:4">
+              <div class='text-center top-buffer-1'>
+                <mno-app-install-btn app="app" ></mno-app-install-btn>
+
+                <!-- <div class="btn-fluid-wrapper" ng-click="openAppModal(app)"> -->
+                  
+                  <!-- <a href="" ng-click="!$ctrl.canProvisionApp || $ctrl.connectAppInstance()" class="btn btn-warning btn-promo btn-lg"> -->
+                  <!-- <a href="" class="btn btn-warning btn-promo btn-lg"> -->
+                    <!-- {{ 'mno_enterprise.templates.onboarding.connect_app_wizard.connect_app' | translate }} -->
+                  </a>
+                </div>
+              </div>
+              <div class='top-buffer-3'>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

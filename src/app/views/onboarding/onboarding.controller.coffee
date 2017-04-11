@@ -7,6 +7,8 @@ angular.module 'mnoEnterpriseAngular'
     vm.appsSelected = []
     vm.areApps = false
     
+    vm.canGoToNextStep = ()->
+      vm.appsSelected.length == 3
     return
 
   )

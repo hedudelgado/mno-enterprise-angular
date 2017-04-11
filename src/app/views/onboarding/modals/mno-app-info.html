@@ -1,0 +1,37 @@
+<div class="app-info">
+  <div class="row row-header top-buffer-4">
+    <div class="col-md-12">
+      <div class="media">
+        <div class="pull-left">
+          <img class="media-object" ng-src="{{vm.app.logo}}" ng-alt="{{vm.app.name}}">
+        </div>
+        <div class="media-body">
+          <h2 class="media-heading">{{vm.app.name}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="col-lg-6">
+      <div class="well top-buffer-1" ng-bind-html="vm.app.description"></div>
+    </div>
+    <div class="col-lg-3">
+      <mno-app-features app="vm.app"></mno-app-features>
+    </div>
+    <div ng-show="vm.showConnectButtons" class="col-lg-4 top-buffer-1">
+      <div class="btn btn-warning btn-promo btn-lg" ng-hide="vm.isLaunchHidden(vm.app)">
+        <a ng-click="vm.launchAction(vm.app,$event);">
+        {{ 'mno_enterprise.templates.impac.dock.launch' | translate }} {{vm.app.name}}</a>
+      </div>
+      <div class="btn btn-warning btn-promo btn-lg" ng-show="vm.isOauthConnectBtnShown(vm.app)">
+          <a ng-click="vm.showConnectModal(vm.app)">
+          {{ 'mno_enterprise.templates.impac.dock.connect' | translate }} {{vm.app.name}}</a>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div ng-show="!!vm.app.free_trial_duration">
+        {{ vm.app.free_trial_duration }}{{ 'mno_enterprise.templates.onboarding.connect_app_wizard.free_trial' | translate }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,26 +5,27 @@ angular.module 'mnoEnterpriseAngular'
       restrict: 'EA'
       templateUrl: 'app/components/mno-select-app-wizard/mno-select-app-wizard.html',
       scope: {
-        appsData: '='
+        apps: '='
         isPanelShown: '='
       }
 
-      controller: ($scope, $window, MnoeMarketplace, $sce, $uibModal) ->
-        $scope.selectedCategory = ''
-        $scope.searchTerm = ''
+      controller: ($scope, $window, MnoeMarketplace, $sce, $uibModal, $attrs) ->
+        $scope.selectedCategory = { category:'' }
+        $scope.searchTerm = { name:'' }
+        $scope.isLoading = true
 
         $scope.trustSrc = (src) ->
           $sce.trustAsResourceUrl(src)
-      
+
         $scope.toggleApp = (app) ->
           $scope.appForDataSync(app)
           app.checked = !app.checked
 
         $scope.appsFilter = (app) ->
-          if ($scope.searchTerm? && $scope.searchTerm.length > 0) || !$scope.selectedCategory
+          if ($scope.searchTerm? && $scope.searchTerm.length > 0) || !$scope.selectedCategory.category
             return true
           else
-            return _.contains(app.categories, $scope.selectedCategory)
+            return _.contains(app.categories, $scope.selectedCategory.category)
 
 
         # ----------------------
@@ -44,37 +45,36 @@ angular.module 'mnoEnterpriseAngular'
         # Info modal
         #====================================
         $scope.openInfoModal = (app) ->
+          showConnectButtons = false
           modalInstance = $uibModal.open(
-            templateUrl: 'app/components/mno-app-info/mno-app-info.html'
+            templateUrl: 'app/views/onboarding/modals/mno-app-info.html'
             controller: 'MnoAppInfoCtrl'
             controllerAs: 'vm',
             size: 'lg'
-            windowClass: 'inverse'
-            backdrop: 'static'
             resolve:
+              showConnectButtons: showConnectButtons
               app: app
           )
-          modalInstance.result.then(
-            (response) ->
-          )
+            
 
         # --------------------------------------------------
         # Control the apps in 'what data will be sync panel'
         # --------------------------------------------------
         $scope.appForDataSync = (app) ->
-          if _.find($scope.appsData, (m) -> m.id == app.id)
-            indexOfApp = $scope.appsData.indexOf(app)
-            $scope.appsData.splice(indexOfApp,1)
+          if _.find($scope.apps, (m) -> m.id == app.id)
+            indexOfApp = $scope.apps.indexOf(app)
+            $scope.apps.splice(indexOfApp,1)
           else
-            $scope.appsData.push(app)
-          $scope.isPanelShown = $scope.appsData.length > 0
+            $scope.apps.push(app)
+          $scope.isPanelShown = $scope.apps.length > 0
 
 
         MnoeMarketplace.getApps().then(
           (response) ->
             response = response.plain()
             $scope.categories = response.categories
-            $scope.apps = response.apps
+            $scope.isLoading = false
+            $scope.appsMarketplace = response.apps
         )
 
         return

@@ -5,7 +5,7 @@ angular.module 'mnoEnterpriseAngular'
       restrict: 'EA'
       templateUrl: 'app/components/mno-data-sync/mno-data-sync.html',
       scope: {
-        appsData: '='
+        apps: '='
         isPanelShown: '='
       }
 
