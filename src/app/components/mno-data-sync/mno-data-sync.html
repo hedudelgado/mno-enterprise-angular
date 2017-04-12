@@ -16,11 +16,11 @@
             <table class="data-sync-table table table-bordered">
               <tr>
                 <th></th>
-                <td ng-repeat="app in apps | limitTo:4"><img class="media-object" ng-src="{{app.logo}}" alt="{{app.name}}"></td>
+                <td ng-repeat="app in apps | limitTo:10"><img class="media-object" ng-src="{{app.logo}}" alt="{{app.name}}"></td>
               </tr>
               <tr>
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.contacts' | translate}}</th>
-                <td ng-repeat="app in apps | limitTo:4">
+                <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
                   <div class="media-object">
                     <span class="glyphicon" ng-class="{ 'glyphicon-ok': true, 'glyphicon-remove': false }"></span>
@@ -29,21 +29,21 @@
               </tr>
               <tr>
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.invoices' | translate}}</th>
-                <td ng-repeat="app in apps | limitTo:4">
+                <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
                   <span class="glyphicon" ng-class="{ 'glyphicon-ok': false, 'glyphicon-remove': true }"></span>
                 </td>
               </tr>
               <tr>
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.journals' | translate}}</th>
-                <td ng-repeat="app in apps | limitTo:4">
+                <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
                   <span class="glyphicon" ng-class="{ 'glyphicon-ok': false, 'glyphicon-remove': true }"></span>
                 </td>
               </tr>
               <tr>
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.employees' | translate}}</th>
-                <td ng-repeat="app in apps | limitTo:4">
+                <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
                   <span class="glyphicon" ng-class="{ 'glyphicon-ok': true, 'glyphicon-remove': false }"></span>
                 </td>
@@ -51,7 +51,7 @@
               <tr>
               <tr>
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.opportunities' | translate}}</th>
-                <td ng-repeat="app in apps | limitTo:4">
+                <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
                   <span class="glyphicon" ng-class="{ 'glyphicon-ok': true, 'glyphicon-remove': false }"></span>
                 </td>

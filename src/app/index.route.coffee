@@ -91,7 +91,7 @@ angular.module 'mnoEnterpriseAngular'
 
 
     # TODO
-    # if WIZARD_CONFIG.enabled
+    # if WIZARD_CONFIG.enabled && wizard_finish
       # $stateProvider
       #   .state 'onboarding',
       #     data:

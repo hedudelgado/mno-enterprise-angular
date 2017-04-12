@@ -19,14 +19,7 @@
       <mno-app-features app="vm.app"></mno-app-features>
     </div>
     <div ng-show="vm.showConnectButtons" class="col-lg-4 top-buffer-1">
-      <div class="btn btn-warning btn-promo btn-lg" ng-hide="vm.isLaunchHidden(vm.app)">
-        <a ng-click="vm.launchAction(vm.app,$event);">
-        {{ 'mno_enterprise.templates.impac.dock.launch' | translate }} {{vm.app.name}}</a>
-      </div>
-      <div class="btn btn-warning btn-promo btn-lg" ng-show="vm.isOauthConnectBtnShown(vm.app)">
-          <a ng-click="vm.showConnectModal(vm.app)">
-          {{ 'mno_enterprise.templates.impac.dock.connect' | translate }} {{vm.app.name}}</a>
-      </div>
+      <mno-app-install-btn app="vm.app"></mno-app-install-btn>
     </div>
     <div class="col-lg-4">
       <div ng-show="!!vm.app.free_trial_duration">

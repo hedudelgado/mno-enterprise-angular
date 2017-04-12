@@ -20,5 +20,5 @@ angular.module 'mnoEnterpriseAngular', [
   'ngPageTitle',
   'angularMoment',
   'mgo-angular-wizard',
-   'mnoUiElements'
+  'mnoUiElements'
 ]

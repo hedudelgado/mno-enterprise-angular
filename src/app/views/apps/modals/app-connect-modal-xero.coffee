@@ -11,7 +11,12 @@ angular.module 'mnoEnterpriseAngular'
 
   $scope.connect = (form) ->
     form['extra_params[]'] = "payroll" if $scope.payroll
-    $window.location.href = $scope.path + $httpParamSerializer(form)
+    # TODO if wizard enabled onboarding in progress and this is trigger from the slider we do not redirect to impac'
+    if true
+      $window.open($scope.path + $httpParamSerializer(form))
+    else
+      $window.location.href = $scope.path + $httpParamSerializer(form)
+
 
   $scope.close = ->
     $uibModalInstance.close()
