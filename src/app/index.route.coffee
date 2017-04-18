@@ -1,5 +1,5 @@
 angular.module 'mnoEnterpriseAngular'
-  .config ($stateProvider, $urlRouterProvider, URI, I18N_CONFIG, MARKETPLACE_CONFIG) ->
+  .config ($stateProvider, $urlRouterProvider, URI, I18N_CONFIG, MARKETPLACE_CONFIG, ONBOARDING_WIZARD_CONFIG, MnoeCurrentUserProvider) ->
 
     $stateProvider
       .state 'home',
@@ -50,6 +50,15 @@ angular.module 'mnoEnterpriseAngular'
             else
               $window.location.href = "#{URI.login}"
           )
+    if ONBOARDING_WIZARD_CONFIG.enabled
+      $stateProvider
+        .state 'onboarding',
+          data:
+            pageTitle:'Onboarding'
+          url: '/onboarding'
+          templateUrl: 'app/views/onboarding/onboarding.html'
+          controller: 'OnboardingCtrl'
+          controllerAs: 'vm'
 
     if MARKETPLACE_CONFIG.enabled
       $stateProvider
@@ -68,13 +77,6 @@ angular.module 'mnoEnterpriseAngular'
             templateUrl: 'app/views/marketplace/marketplace-app.html'
             controller: 'DashboardMarketplaceAppCtrl'
             controllerAs: 'vm'
-        .state 'onboarding',
-          data:
-            pageTitle:'Onboarding'
-          url: '/onboarding'
-          templateUrl: 'app/views/onboarding/onboarding.html'
-          controller: 'OnboardingCtrl'
-          controllerAs: 'vm'
         .state 'home.marketplace.compare',
           data:
             pageTitle:'Compare apps'
@@ -84,19 +86,5 @@ angular.module 'mnoEnterpriseAngular'
             controller: 'DashboardMarketplaceCompareCtrl'
             controllerAs: 'vm'
 
-    # $urlRouterProvider.otherwise '/impac'
-    
-    # TO DELETE
-    $urlRouterProvider.otherwise '/onboarding'
+    $urlRouterProvider.otherwise '/impac'
 
-
-    # TODO
-    # if WIZARD_CONFIG.enabled && wizard_finish
-      # $stateProvider
-      #   .state 'onboarding',
-      #     data:
-      #       pageTitle:'Onboarding'
-      #     url: '/onboarding'
-      #     templateUrl: 'app/views/onboarding/onboarding.html'
-
-    #     $urlRouterProvider.otherwise '/onboarding'

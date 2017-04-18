@@ -1,6 +1,6 @@
 <div id="wizard">
   <div class="main-box">
-    <wizard on-finish="finishedWizard()">
+    <wizard on-finish="vm.finishedWizard()">
       <wz-step wz-title="{{'mno_enterprise.templates.onboarding.select_your_app.select_application_step_bar' | translate}}">
         <mno-welcome-wizard></mno-welcome-wizard>
         <div class="text-right">
@@ -15,9 +15,7 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="content-left">
-                <div class="pre-scrollable">
-                  <mno-select-app-wizard apps="vm.appsSelected" is-panel-shown="vm.areApps" ></mno-select-app-wizard>
-                </div>
+                <mno-select-app-wizard apps="vm.appsSelected" is-panel-shown="vm.areApps" ></mno-select-app-wizard>
               </div>
             </div>
             <div class="col-lg-6">
@@ -26,15 +24,25 @@
           </div>
         </div>
         <div class="text-right">
-          <a href="#" wz-next ng-disabled="!vm.canGoToNextStep()" uib-tooltip="{{ 'mno_enterprise.templates.onboarding.select_your_app.min_apps' | translate }}" class="btn btn-default btn-lg">{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.next' | translate}}<span class="glyphicon glyphicon-menu-right"></span></a>
+          <a href="#" wz-next="vm.purchaseApps()" ng-disabled="!vm.canGoToNextStep()" uib-tooltip="{{ 'mno_enterprise.templates.onboarding.select_your_app.min_apps' | translate }}" class="btn btn-default btn-lg">{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.next' | translate}}<span class="glyphicon glyphicon-menu-right"></span></a>
         </div>
       </wz-step>
       <wz-step wz-title="{{'mno_enterprise.templates.onboarding.select_your_app.discover_your_account' | translate}}">
         <div class="text-center">
           <h1>{{'mno_enterprise.templates.onboarding.select_your_app.connect_applications' | translate}}</h1>
         </div>
-          <connect-applications-wizard apps="vm.appsSelected" ></connect-applications-wizard>
-          <input type="submit" wz-next value="Finish now" />
+          <connect-applications-wizard apps="vm.appsSelected" are-apps-ready="vm.areAppsConnected"></connect-applications-wizard>
+        <div class="text-right">
+          <a href="#" wz-next class="btn btn-default btn-lg">{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.next' | translate}}<span class="glyphicon glyphicon-menu-right"></span></a>
+        </div>
+      </wz-step>
+      <wz-step wz-title="{{'mno_enterprise.templates.onboarding.end_wizard.almost_there' | translate}}">
+        <div class="text-center">
+          <mno-end-wizard></mno-end-wizard>
+        </div>
+        <div class="text-right">
+          <input type="submit" wz-next value="Finish now"/>
+        </div>   
       </wz-step>
     </wizard>
   </div>

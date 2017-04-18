@@ -18,15 +18,14 @@ angular.module 'mnoEnterpriseAngular'
           $sce.trustAsResourceUrl(src)
 
         $scope.toggleApp = (app) ->
-          $scope.appForDataSync(app)
           app.checked = !app.checked
+          $scope.appForDataSync(app)
 
         $scope.appsFilter = (app) ->
           if ($scope.searchTerm? && $scope.searchTerm.length > 0) || !$scope.selectedCategory.category
             return true
           else
             return _.contains(app.categories, $scope.selectedCategory.category)
-
 
         # ----------------------
         # Info button management
@@ -55,19 +54,14 @@ angular.module 'mnoEnterpriseAngular'
               showConnectButtons: showConnectButtons
               app: app
           )
-            
-
+        
         # --------------------------------------------------
         # Control the apps in 'what data will be sync panel'
         # --------------------------------------------------
         $scope.appForDataSync = (app) ->
-          if _.find($scope.apps, (m) -> m.id == app.id)
-            indexOfApp = $scope.apps.indexOf(app)
-            $scope.apps.splice(indexOfApp,1)
-          else
-            $scope.apps.push(app)
+          $scope.apps = _.map(_.filter($scope.appsMarketplace, {checked: true}))
           $scope.isPanelShown = $scope.apps.length > 0
-
+          $scope.isRecommendationShown = $scope.apps.length > 4
 
         MnoeMarketplace.getApps().then(
           (response) ->

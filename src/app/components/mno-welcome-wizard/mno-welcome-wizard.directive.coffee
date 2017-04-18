@@ -5,6 +5,6 @@ angular.module 'mnoEnterpriseAngular'
       restrict: 'EA'
       templateUrl: 'app/components/mno-welcome-wizard/mno-welcome-wizard.html'
 
-      controller: ($scope, $window) ->
+      controller: () ->
     }
   )

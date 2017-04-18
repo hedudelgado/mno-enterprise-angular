@@ -33,13 +33,6 @@ angular.module 'mnoEnterpriseAngular'
           processAppInstances(response.app_instances)
       )
 
-    # Retrieve app instances sync status from the backend
-    @fetchAppInstancesSync = ->
-      MnoeApiSvc.one('organizations', MnoeOrganizations.selectedId).one('/app_instances_sync').get().then(
-        (response) ->
-          return response.plain()
-      )
-
     # Process app instances to append them to the public variable
     processAppInstances = (appInstances) ->
       # Empty app instances service array
