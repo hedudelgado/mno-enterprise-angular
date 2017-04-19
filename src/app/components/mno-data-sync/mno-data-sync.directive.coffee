@@ -1,4 +1,3 @@
-
 angular.module 'mnoEnterpriseAngular'
   .directive('mnoDataSync', ->
     return {
@@ -9,7 +8,7 @@ angular.module 'mnoEnterpriseAngular'
         isPanelShown: '='
       }
 
-      controller: ($scope, $window, $sce) ->
+      controller: () ->
 
         return
     }

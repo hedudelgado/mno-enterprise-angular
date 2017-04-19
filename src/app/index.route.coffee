@@ -87,4 +87,3 @@ angular.module 'mnoEnterpriseAngular'
             controllerAs: 'vm'
 
     $urlRouterProvider.otherwise '/impac'
-

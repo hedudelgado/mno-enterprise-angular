@@ -1,4 +1,3 @@
-
 angular.module 'mnoEnterpriseAngular'
   .directive('mnoWelcomeWizard', ->
     return {
@@ -6,5 +5,6 @@ angular.module 'mnoEnterpriseAngular'
       templateUrl: 'app/components/mno-welcome-wizard/mno-welcome-wizard.html'
 
       controller: () ->
+        return
     }
   )

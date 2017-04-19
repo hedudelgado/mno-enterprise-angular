@@ -3,7 +3,7 @@
   <!-- Header -->
   <div class="connect-apps-wrap">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 top-buffer-1">
         <table class="connect-apps-table table table-bordered">
           <tr>
             <td ng-repeat="app in apps | limitTo:4">
@@ -13,8 +13,8 @@
             <img class="media-object" ng-src="{{app.logo}}" alt="{{app.name}}"></td>
           </tr>
           <tr>
-            <td class='top-buffer-3' ng-repeat="app in apps | limitTo:4">
-              <div class='text-center top-buffer-1'>
+            <td class='top-buffer-4' ng-repeat="app in apps | limitTo:4">
+              <div class='text-center top-buffer-2'>
                 <mno-app-install-btn app="app"></mno-app-install-btn>
               </div>
             </td>

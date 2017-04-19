@@ -1,8 +1,8 @@
 <div id="select-app">
   <div class="select-app-marketplace">
     <div class="row">
-      <div class="col-xs-12">
-      <div class="recommendation-sentence" ng-show="isRecommendationShown">{{ 'mno_enterprise.templates.onboarding.select_your_app.we_recommend' | translate }}</div>
+      <div class="wrapper-box">
+        <div class="recommendation-sentence" ng-show="isRecommendationShown">{{ 'mno_enterprise.templates.onboarding.select_your_app.we_recommend' | translate }}</div>
         <div class="pre-scrollable">
           <mno-widget>
             <mno-widget-header>
@@ -19,9 +19,7 @@
                     <div class="checked" ng-show="app.checked">
                       <i class="fa fa-check fa-5x"></i>
                     </div>
-                    <img class="app-logo img-thumbnail" ng-src="{{app.logo}}" alt="{{'mno_enterprise.templates.onboarding.select_your_app.app_logo' | translate:{'app': app.name} }}"" title="{{app.tiny_description}}">
-                    <!-- Delete the one above and uncomment the one bellow once we push to deploy -->
-                    <!-- <img class="app-logo img-thumbnail" ng-src="{{trustSrc(app.logo)}}" alt="{{'mno_enterprise.templates.onboarding.select_your_app.app_logo' | translate:{'app': app.name} }}"" title="{{::app.tiny_description}}"> -->
+                    <img class="app-logo img-thumbnail" ng-src="{{trustSrc(app.logo)}}" alt="{{'mno_enterprise.templates.onboarding.select_your_app.app_logo' | translate:{'app': app.name} }}"" title="{{::app.tiny_description}}">
                   </div>
                   <button type="button" class="pull-right info-btn" ng-click="openInfoModal(app)" ng-show="isInfoShown(app)">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>

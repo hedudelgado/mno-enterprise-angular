@@ -1,24 +1,20 @@
 <div class="app-info">
   <div class="row row-header top-buffer-4">
-    <div class="col-md-12">
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object" ng-src="{{vm.app.logo}}" ng-alt="{{vm.app.name}}">
-        </div>
-        <div class="media-body">
-          <h2 class="media-heading">{{vm.app.name}}</h2>
-        </div>
+    <div class="media">
+      <img class="media-object pull-left" ng-src="{{vm.app.logo}}" ng-alt="{{vm.app.name}}">
+      <div class="media-body">
+        <h2 class="media-heading">{{vm.app.name}}</h2>
       </div>
     </div>
   </div>
   <div class="container-fluid">
-    <div class="col-lg-6">
+    <div class="col-lg-6 position-left-element">
       <div class="well top-buffer-1" ng-bind-html="vm.app.description"></div>
     </div>
-    <div class="col-lg-3">
+    <div class="position-right-top-element">
       <mno-app-features app="vm.app"></mno-app-features>
     </div>
-    <div ng-show="vm.showConnectButtons" class="col-lg-4 top-buffer-1">
+    <div ng-show="vm.showConnectButtons" class="position-right-bottom-element top-buffer-1">
       <mno-app-install-btn app="vm.app"></mno-app-install-btn>
     </div>
     <div class="col-lg-4">

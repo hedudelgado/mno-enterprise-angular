@@ -1,4 +1,3 @@
-
 angular.module 'mnoEnterpriseAngular'
   .directive('mnoSelectAppWizard', ->
     return {
@@ -9,7 +8,7 @@ angular.module 'mnoEnterpriseAngular'
         isPanelShown: '='
       }
 
-      controller: ($scope, $window, MnoeMarketplace, $sce, $uibModal, $attrs) ->
+      controller: ($scope, MnoeMarketplace, $sce, $uibModal) ->
         $scope.selectedCategory = { category:'' }
         $scope.searchTerm = { name:'' }
         $scope.isLoading = true
@@ -27,9 +26,9 @@ angular.module 'mnoEnterpriseAngular'
           else
             return _.contains(app.categories, $scope.selectedCategory.category)
 
-        # ----------------------
+        # ======================
         # Info button management
-        # ----------------------
+        # ======================
         $scope.hoverIn = (app) ->
           app.isInfoButtonShown = true
 
@@ -39,10 +38,9 @@ angular.module 'mnoEnterpriseAngular'
         $scope.isInfoShown = (app) ->
           app.isInfoButtonShown && !app.checked
 
-
-        #====================================
+        # ====================================
         # Info modal
-        #====================================
+        # ====================================
         $scope.openInfoModal = (app) ->
           showConnectButtons = false
           modalInstance = $uibModal.open(
@@ -55,20 +53,23 @@ angular.module 'mnoEnterpriseAngular'
               app: app
           )
         
-        # --------------------------------------------------
+        # ==================================================
         # Control the apps in 'what data will be sync panel'
-        # --------------------------------------------------
+        # ==================================================
         $scope.appForDataSync = (app) ->
           $scope.apps = _.map(_.filter($scope.appsMarketplace, {checked: true}))
           $scope.isPanelShown = $scope.apps.length > 0
           $scope.isRecommendationShown = $scope.apps.length > 4
 
+        # ==================================
+        # Retrieve apps for marketplace box
+        # ==================================
         MnoeMarketplace.getApps().then(
           (response) ->
             response = response.plain()
             $scope.categories = response.categories
-            $scope.isLoading = false
             $scope.appsMarketplace = response.apps
+            $scope.isLoading = false
         )
 
         return

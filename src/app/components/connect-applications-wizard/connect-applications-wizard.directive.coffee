@@ -1,4 +1,3 @@
-
 angular.module 'mnoEnterpriseAngular'
   .directive('connectApplicationsWizard',->
     return {

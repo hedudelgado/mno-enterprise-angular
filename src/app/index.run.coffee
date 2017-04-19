@@ -92,12 +92,11 @@ angular.module 'mnoEnterpriseAngular'
         MnoeMarketplace.getApps()
     )
   )
-  # Check the status the onboarding wizard's status: if it is not finished it wil redirect to it
-  .run(($rootScope, $location, $q, $stateParams, MnoeCurrentUser, ONBOARDING_WIZARD_CONFIG) ->
+  # Check the status the onboarding wizard's status, if it is not finished it wil redirect to the onboarding slider
+  .run(($location, MnoeCurrentUser, ONBOARDING_WIZARD_CONFIG) ->
     MnoeCurrentUser.get().then( ->
       isWizardFinished = MnoeCurrentUser.user.wizard_finished
       if ONBOARDING_WIZARD_CONFIG.enabled && !isWizardFinished
         $location.path( "/onboarding" )
       )
   )
-

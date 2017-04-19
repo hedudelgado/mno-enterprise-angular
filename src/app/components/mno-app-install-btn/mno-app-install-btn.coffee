@@ -4,7 +4,7 @@ angular.module 'mnoEnterpriseAngular'
       app: '='
     },
     templateUrl: 'app/components/mno-app-install-btn/mno-app-install-btn.html',
-    controller: ($q, $state, $window, $uibModal, toastr, MnoeMarketplace, MnoeCurrentUser, MnoeOrganizations, MnoeAppInstances) ->
+    controller: ($q, $state, $window, $uibModal, toastr, MnoeMarketplace, MnoeCurrentUser, MnoeOrganizations, MnoeAppInstances, ONBOARDING_WIZARD_CONFIG) ->
       vm = this
 
       # Return the different status of the app regarding its installation
@@ -32,7 +32,10 @@ angular.module 'mnoEnterpriseAngular'
         return if !vm.canProvisionApp
         vm.isLoadingButton = true
         MnoeAppInstances.clearCache()
-
+        # It checks if the current user either finished the wizard or not
+        MnoeCurrentUser.get().then( ->
+          isWizardFinished = MnoeCurrentUser.user.wizard_finished
+        )
         # Get the authorization status for the current organization
         if MnoeOrganizations.role.atLeastAdmin(vm.user_role)
           purchasePromise = MnoeOrganizations.purchaseApp(vm.app, MnoeOrganizations.selectedId)
@@ -41,10 +44,9 @@ angular.module 'mnoEnterpriseAngular'
 
         purchasePromise.then(
           ->
-            # TODO if wizard enabled and this is trigger from the slider we do not redirect to impac'
-            if true
-
-            else
+            # If the wizard is enabled and has not been completed it will not redirect to impac
+            # for the wizard to be completed.
+            unless ONBOARDING_WIZARD_CONFIG.enabled && !isWizardFinished
               $state.go('home.impac')
 
             switch vm.app.stack
@@ -57,12 +59,9 @@ angular.module 'mnoEnterpriseAngular'
                   displayConnectToastr(vm.app)
         ).finally(->
           vm.isLoadingButton = false
-
-          # TODO if wizard enabled and this is trigger from the slider we do not redirect to impac'
-          if true
+          # If the wizard is enabled and has not been completed it will open the modal to connect the app
+          if ONBOARDING_WIZARD_CONFIG.enabled && !isWizardFinished
             openConnectAppModal()
-
-            console.log('if wizard enabled and this is trigger from the slider we do not redirect to impac')
             )
 
       displayLaunchToastr = (app) ->

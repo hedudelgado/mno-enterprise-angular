@@ -46,7 +46,6 @@ angular.module 'mnoEnterpriseAngular'
       MnoeApiSvc.all('current_user').doPUT({user: user}).then(
         (response) ->
           angular.copy(response, _self.user)
-          console.log(response)
           response
       )
 
