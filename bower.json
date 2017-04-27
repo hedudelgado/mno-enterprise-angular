@@ -49,5 +49,9 @@
         "./fonts/*"
       ]
     }
+  },
+  "resolutions": {
+    "angular-bootstrap": "^2.5.0",
+    "lodash": "^3.10.1"
   }
 }
