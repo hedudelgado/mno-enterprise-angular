@@ -15,7 +15,12 @@
           <tr>
             <td class='top-buffer-4' ng-repeat="app in apps | limitTo:4">
               <div class='text-center top-buffer-2'>
-                <mno-app-install-btn app="app"></mno-app-install-btn>
+                <div class="menu-item ng-hide" ng-hide="isLaunchHidden(app)">
+                  <a href="#" class="btn btn-primary btn-primary" ng-click="launchApp(app,$event);">{{ 'mno_enterprise.templates.onboarding.connect_apps.launch_app' | translate }}</a>
+                </div>
+                <div class="menu-item ng-hide" ng-show="isOauthConnectBtnShown(app)">
+                  <a href="#" class="btn btn-primary btn-primary" ng-click="showConnectModal(app)">{{ 'mno_enterprise.templates.onboarding.connect_apps.connect' | translate }}</a>
+                </div>
               </div>
             </td>
           </tr>
