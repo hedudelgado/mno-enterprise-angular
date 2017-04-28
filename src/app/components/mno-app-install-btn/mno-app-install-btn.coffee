@@ -32,10 +32,6 @@ angular.module 'mnoEnterpriseAngular'
         return if !vm.canProvisionApp
         vm.isLoadingButton = true
         MnoeAppInstances.clearCache()
-        # It checks if the current user either finished the wizard or not
-        MnoeCurrentUser.get().then( ->
-          isWizardFinished = MnoeCurrentUser.user.wizard_finished
-        )
         # Get the authorization status for the current organization
         if MnoeOrganizations.role.atLeastAdmin(vm.user_role)
           purchasePromise = MnoeOrganizations.purchaseApp(vm.app, MnoeOrganizations.selectedId)
@@ -46,7 +42,7 @@ angular.module 'mnoEnterpriseAngular'
           ->
             # If the wizard is enabled and has not been completed it will not redirect to impac
             # for the wizard to be completed.
-            unless ONBOARDING_WIZARD_CONFIG.enabled && !isWizardFinished
+            unless ONBOARDING_WIZARD_CONFIG.enabled
               $state.go('home.impac')
 
             switch vm.app.stack
@@ -59,8 +55,8 @@ angular.module 'mnoEnterpriseAngular'
                   displayConnectToastr(vm.app)
         ).finally(->
           vm.isLoadingButton = false
-          # If the wizard is enabled and has not been completed it will open the modal to connect the app
-          if ONBOARDING_WIZARD_CONFIG.enabled && !isWizardFinished
+          # If the wizard is enabled
+          if ONBOARDING_WIZARD_CONFIG.enabled
             openConnectAppModal()
             )
 

@@ -14,13 +14,7 @@ angular.module 'mnoEnterpriseAngular'
     # If Xero is being connected from the wizard and the user has not finished the onboarding wizard,
     # it will open a new page in the browser, otherwise it will be in the same page
     if ONBOARDING_WIZARD_CONFIG.enabled
-      MnoeCurrentUser.get().then( ->
-        isWizardFinished = MnoeCurrentUser.user.wizard_finished
-        if !isWizardFinished
-          $window.open($scope.path + $httpParamSerializer(form))
-        else
-          $window.location.href = $scope.path + $httpParamSerializer(form)
-      )
+      $window.open($scope.path + $httpParamSerializer(form))
     else
       $window.location.href = $scope.path + $httpParamSerializer(form)
 

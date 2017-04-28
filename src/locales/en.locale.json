@@ -795,6 +795,8 @@
   "mno_enterprise.templates.onboarding.data_sync.what_data":"What data will be synchronised",
   "mno_enterprise.templates.onboarding.data_sync.start":"Start visualise the data synchronised by your applications by selecting one by clicking on its icon.",
   "mno_enterprise.templates.onboarding.data_sync.learn_more":"Learn more on how Maestrano synchronise data between your applications.",
+  "mno_enterprise.templates.onboarding.connect_apps.launch_app":"Launch",
+  "mno_enterprise.templates.onboarding.connect_apps.connect":"Connect",
   "mno_enterprise.templates.onboarding.end_wizard.almost_there": "almost there",
   "mno_enterprise.templates.onboarding.end_wizard.almost_ready": "Your account is almost ready !",
   "mno_enterprise.auth.confirmations.new.title": "Confirmation",
