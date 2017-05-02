@@ -9,7 +9,6 @@ angular.module 'mnoEnterpriseAngular'
       }
 
       controller: ($scope, MnoeAppInstances, $window) ->
-        $scope.activeApp = null
 
         $scope.isLaunchHidden = (app) ->
           app.status == 'terminating' ||
@@ -25,23 +24,8 @@ angular.module 'mnoEnterpriseAngular'
         $scope.isNewOfficeApp = (instance) ->
           instance.stack == 'connector' && instance.appNid == 'office-365' && (moment(instance.createdAt) > moment().subtract({minutes:5}))
 
-        $scope.launchApp = (app, event) ->
-          $scope.setAppActive(event, app.id)
-          if app.customInfoRequired
-            return false
-          else
-            $window.open("/mnoe/launch/#{app.uid}", '_blank')
-            return true
-
-        $scope.setAppActive = (event, app) ->
-          if $scope.isActiveApp(app)
-            $scope.activeApp = null
-          else
-            angular.element(event.target).off('mouseout')
-            $scope.activeApp = app
-
-        $scope.isActiveApp = (app) ->
-          $scope.activeApp == app
+        $scope.launchApp = (app) ->
+          $window.open("/mnoe/launch/#{app.uid}", '_blank')
 
         $scope.oAuthConnectPath = (instance)->
           MnoeAppInstances.clearCache()

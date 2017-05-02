@@ -58,7 +58,7 @@ angular.module 'mnoEnterpriseAngular'
           # If the wizard is enabled
           if ONBOARDING_WIZARD_CONFIG.enabled
             openConnectAppModal()
-            )
+        )
 
       displayLaunchToastr = (app) ->
         toastr.success(

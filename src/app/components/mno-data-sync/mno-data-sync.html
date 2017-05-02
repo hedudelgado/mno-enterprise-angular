@@ -31,21 +31,21 @@
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.invoices' | translate}}</th>
                 <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
-                  <span class="glyphicon" ng-class="{ 'glyphicon-ok': false, 'glyphicon-remove': true }"></span>
+                  <span class="glyphicon" ng-class="isInvoicesShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>
               </tr>
               <tr>
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.journals' | translate}}</th>
                 <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
-                  <span class="glyphicon" ng-class="{ 'glyphicon-ok': false, 'glyphicon-remove': true }"></span>
+                  <span class="glyphicon" ng-class="isJournalsShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>
               </tr>
               <tr>
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.employees' | translate}}</th>
                 <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
-                  <span class="glyphicon" ng-class="{ 'glyphicon-ok': true, 'glyphicon-remove': false }"></span>
+                  <span class="glyphicon" ng-class="isEmployeesShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>
               </tr>
               <tr>
@@ -53,7 +53,7 @@
                 <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.opportunities' | translate}}</th>
                 <td ng-repeat="app in apps | limitTo:10">
                   <!-- inside true we will evaluate if the app share this data or not to display the right glyphicon -->
-                  <span class="glyphicon" ng-class="{ 'glyphicon-ok': true, 'glyphicon-remove': false }"></span>
+                  <span class="glyphicon" ng-class="isOpportunitiesShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>
               </tr>
             </table>

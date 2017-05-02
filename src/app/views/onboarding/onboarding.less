@@ -1,26 +1,46 @@
 #wizard {
-
-  padding: 80px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 
   .main-box {
-    position: relative;
-    border: solid 1px;
+    width: 90%;
+    height: 90%;
+    max-height: 90%;
+    overflow: hidden;
     background: @bg-on-bg-inverse-color;
-    height:545px;
-    width: 71%;
-    margin: 0 auto;
-    padding: 20px;
-    resize: both;
-    overflow: auto;
+    border: solid 1px black;
+    display: flex;
+
+    & > div[on-finish] {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+    }
+    
+    & .steps {
+      flex-grow: 1;
+    }
+
+    & .step {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
   }
 
-  .btn.btn-default {
+  .style-button {
     color: @text-strong-color;
     background-color: transparent;
     background-image: linear-gradient(to bottom, transparent, transparent);
     border-color: transparent transparent transparent;
   }
-  .btn.btn-default:hover {
+
+  .style-button:hover {
     color: @text-strong-color;
     background-color: transparent;
     background-image: linear-gradient(to bottom, transparent, transparent);
@@ -30,7 +50,9 @@
   .move-right {
     padding-right: 0px;
   }
-
+  .steps-indicator {
+    padding: 25px 0 40px 0
+  }
   .glyphicon {
     font-size: 18px;
     position: relative;
@@ -43,4 +65,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+#container-app-selection {
+  min-height: 80%;
+  min-width: 100%;
+  max-height: 80%;
+  max-width: 100%;
 }

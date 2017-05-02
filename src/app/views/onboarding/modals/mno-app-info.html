@@ -14,9 +14,6 @@
     <div class="position-right-top-element">
       <mno-app-features app="vm.app"></mno-app-features>
     </div>
-    <div ng-show="vm.showConnectButtons" class="position-right-bottom-element top-buffer-1">
-      <mno-app-install-btn app="vm.app"></mno-app-install-btn>
-    </div>
     <div class="col-lg-4">
       <div ng-show="!!vm.app.free_trial_duration">
         {{ vm.app.free_trial_duration }}{{ 'mno_enterprise.templates.onboarding.connect_app_wizard.free_trial' | translate }}

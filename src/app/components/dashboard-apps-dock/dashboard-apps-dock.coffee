@@ -46,11 +46,7 @@ DashboardAppsDockCtrl = ($scope, $cookies, $uibModal, $window, MnoeOrganizations
   # If app requires custom we open the popup, otherwise we open the link directly
   $scope.launchAction = (app, event) ->
     $scope.setActiveApp(event, app.id)
-    if app.customInfoRequired
-      return false
-    else
-      $window.open("/mnoe/launch/#{app.uid}", '_blank')
-      return true
+    $window.open("/mnoe/launch/#{app.uid}", '_blank')
 
   $scope.setActiveApp = (event, app) ->
     if $scope.isActiveApp(app)

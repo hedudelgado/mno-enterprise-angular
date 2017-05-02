@@ -9,7 +9,7 @@ angular.module 'mnoEnterpriseAngular'
       }
 
       controller: () ->
-
+        # Todo once what data is sync is added
         return
     }
   )

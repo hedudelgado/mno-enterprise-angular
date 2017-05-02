@@ -18,9 +18,7 @@ angular.module 'mnoEnterpriseAngular'
             vm.areAppsConnected = true
           )
 
-    # When click finish wizard, it will redirect to impac and flag the user as he has completed the wizard
     vm.finishedWizard = () ->
-      MnoeCurrentUser.update(wizard_finished: true)
       $state.go('home.impac')
 
     return
