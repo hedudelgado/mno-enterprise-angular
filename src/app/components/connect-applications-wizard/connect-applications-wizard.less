@@ -1,12 +1,14 @@
 #connect-apps-panel {
-  min-height: 80%;
-  max-height: 80%;
+  min-height: 85%;
+  max-height: 85%;
   min-width: 90%;
+  overflow: auto;
     
-  h4 {
-    color: @text-strong-color;
+  .title {
+    font-weight: @onboarding-title-weight;
+    color: @onboarding-title-color; 
   }
-  
+
   .apps-container {
     height: 100%;
     padding: 0;
@@ -23,8 +25,12 @@
   .app-container {
     flex-grow: 1;
     width: 200px;
-    height: 200px;
     margin: 10px;
+
+    h4 {
+      color: @onboarding-connect-apps-app-name-color;
+      font-weight: @onboarding-connect-apps-app-name-weight;
+    }
   }
 
   img.media-object {
@@ -49,5 +55,15 @@
   
   .data-sync-info {
     overflow: auto;
+  }
+
+  .btn-primary {
+    color: @text-inverse-strong-color;
+    background-color: @brand-warning;
+    border-color: @brand-warning;
+  }
+  
+  .btn-primary:hover {
+    background-color: darken(@brand-warning, 10%);
   }
 }

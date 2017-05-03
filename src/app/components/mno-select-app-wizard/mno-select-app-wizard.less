@@ -1,24 +1,36 @@
 #select-app {
+  min-height: 80%;
+  max-height: 80%;
+  min-width: 90%;
+
   .select-app-marketplace {
     width: 99%;
-    height: 800px;
-    max-height: 800px;
-    overflow-y: scroll;
 
     .recommendation-sentence {
-      color: @brand-danger;
+      color: @onboarding-select-app-marketplace-warning-sentence-color;
+    }
+
+    .input-sm {
+      color: @onboarding-select-app-marketplace-search;
     }
 
     .element-left {
       max-width: 150px;
       float: left;
-      // height: 30px;
       margin-top: 0px;
     }
 
+    .form-control {
+      color: @onboarding-select-app-marketplace-search;
+    }
+    
     .apps-container {
       display: flex;
       flex-wrap: wrap;
+
+      i.fa {
+        color: @onboarding-select-app-marketplace-tile-icon-color;
+      }
 
       .app-icon {
         max-width: 120px;
@@ -34,7 +46,7 @@
           .checked {
             position: absolute;
             border-radius: 6px;
-            background-color: rgba(47, 228, 50, 0.3);
+            background-color: @onboarding-select-app-marketplace-tile-check-color;
             left: 0;
             right: 0;
             top: 0;
@@ -53,6 +65,7 @@
                 
         .app-title {
           margin-top: 4px;
+          color: @onboarding-select-app-marketplace-tile-txt-color;
           .ellipsis;
         }
       }

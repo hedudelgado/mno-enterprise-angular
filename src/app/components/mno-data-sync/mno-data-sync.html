@@ -5,12 +5,15 @@
       <div class="col-md-12">
         <div class="data-sync-info">
           <div ng-show="!isPanelShown">
+            <div class="subtitle">
               <h3>{{'mno_enterprise.templates.onboarding.data_sync.what_data' | translate}}</h3>
+            </div>
+            <div class="paragraph">
               {{'mno_enterprise.templates.onboarding.data_sync.start' | translate}}
-             
-              <p class="text-muted">
-                {{'mno_enterprise.templates.onboarding.data_sync.learn_more' | translate}}
-              </p>
+            </div>
+            <p class="text-muted">
+              {{'mno_enterprise.templates.onboarding.data_sync.learn_more' | translate}}
+            </p>
           </div>
           <div ng-show="isPanelShown">
             <table class="data-sync-table table table-bordered">
@@ -23,7 +26,7 @@
                 </td>
               </tr>
               <tr>
-                <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.contacts' | translate}}</th>
+                <th class="col-xs-1 section-name">{{'mno_enterprise.templates.onboarding.data_sync.contacts' | translate}}</th>
                 <td class="text-center" ng-repeat="app in apps | limitTo:10">
                   <div class="media-object">
                     <span class="glyphicon" ng-class="isContactsShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
@@ -31,26 +34,25 @@
                 </td>
               </tr>
               <tr>
-                <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.invoices' | translate}}</th>
+                <th class="col-xs-1 section-name">{{'mno_enterprise.templates.onboarding.data_sync.invoices' | translate}}</th>
                 <td class="text-center" ng-repeat="app in apps | limitTo:10">
                   <span class="glyphicon" ng-class="isInvoicesShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>
               </tr>
               <tr>
-                <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.journals' | translate}}</th>
+                <th class="col-xs-1 section-name">{{'mno_enterprise.templates.onboarding.data_sync.journals' | translate}}</th>
                 <td class="text-center" ng-repeat="app in apps | limitTo:10">
                   <span class="glyphicon" ng-class="isJournalsShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>
               </tr>
               <tr>
-                <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.employees' | translate}}</th>
+                <th class="col-xs-1 section-name">{{'mno_enterprise.templates.onboarding.data_sync.employees' | translate}}</th>
                 <td class="text-center" ng-repeat="app in apps | limitTo:10">
                   <span class="glyphicon" ng-class="isEmployeesShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>
               </tr>
-
               <tr>
-                <th class="col-xs-1">{{'mno_enterprise.templates.onboarding.data_sync.opportunities' | translate}}</th>
+                <th class="col-xs-1 section-name">{{'mno_enterprise.templates.onboarding.data_sync.opportunities' | translate}}</th>
                 <td class="text-center" ng-repeat="app in apps | limitTo:10">
                   <span class="glyphicon" ng-class="isOpportunitiesShared ? 'glyphicon-ok': 'glyphicon-remove'"></span>
                 </td>

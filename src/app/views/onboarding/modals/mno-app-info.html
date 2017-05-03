@@ -9,9 +9,15 @@
   </div>
   <div class="container-fluid">
     <div class="col-lg-6 position-left-element">
+      <h4>{{ 'mno_enterprise.templates.onboarding.connect_app_wizard.what_is' | translate }} {{vm.app.name}}?</h4>
+      <div class="well top-buffer-1" ng-bind-html="vm.app.description">
+      </div>
+      <h4>{{ 'mno_enterprise.templates.onboarding.connect_app_wizard.how_is' | translate }} {{vm.app.name}} {{ 'mno_enterprise.templates.onboarding.connect_app_wizard.integrated' | translate }}</h4>
+      <div class="well top-buffer-1" ng-bind-html="vm.app.description"></div>
+      <h4>{{ 'mno_enterprise.templates.onboarding.connect_app_wizard.what_is_shared' | translate }}{{vm.app.name}}?</h4>
       <div class="well top-buffer-1" ng-bind-html="vm.app.description"></div>
     </div>
-    <div class="position-right-top-element">
+    <div class="position-right-top-element top-buffer-3">
       <mno-app-features app="vm.app"></mno-app-features>
     </div>
     <div class="col-lg-4">
