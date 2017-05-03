@@ -8,7 +8,7 @@ angular.module 'mnoEnterpriseAngular'
         areAppsReady: "="
       }
 
-      controller: ($scope, MnoeAppInstances, $window) ->
+      controller: ($scope, MnoeAppInstances, $window, $uibModal) ->
 
         $scope.isLaunchHidden = (app) ->
           app.status == 'terminating' ||
