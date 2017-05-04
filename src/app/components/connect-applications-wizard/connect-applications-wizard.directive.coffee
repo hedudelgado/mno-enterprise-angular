@@ -4,11 +4,23 @@ angular.module 'mnoEnterpriseAngular'
       restrict: 'EA'
       templateUrl: 'app/components/connect-applications-wizard/connect-applications-wizard.html',
       scope: {
-        apps: '='
-        areAppsReady: "="
+        areAppsPurchased: "="
       }
 
-      controller: ($scope, MnoeAppInstances, $window, $uibModal) ->
+      controller: ($scope, MnoeAppInstances, $window, $uibModal, MnoeOrganizations) ->
+
+        $scope.areAppsReady = false
+        # Once the apps selected in the onboarding marketplace are added to the organization
+        # it will retreive the app instances to connect them.
+        $scope.$watch('areAppsPurchased', (finishAddingApps)->
+          if finishAddingApps
+            $scope.$watch MnoeOrganizations.getSelectedId, (val) ->
+              if val?
+                MnoeAppInstances.getAppInstances().then( ->
+                  $scope.apps = MnoeAppInstances.appInstances
+                  $scope.areAppsReady = true
+                )
+        , true)
 
         $scope.isLaunchHidden = (app) ->
           app.status == 'terminating' ||

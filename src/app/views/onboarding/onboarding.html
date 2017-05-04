@@ -24,7 +24,7 @@
         </div>
       </wz-step>
       <wz-step wz-title="{{'mno_enterprise.templates.onboarding.connect_app' | translate}}">
-        <connect-applications-wizard apps="vm.appsSelected" are-apps-ready="vm.areAppsConnected"></connect-applications-wizard>
+        <connect-applications-wizard are-apps-purchased="vm.areAppsConnected"></connect-applications-wizard>
         <div class="text-right">
           <a href="#" wz-next ng-show="vm.areAppsConnected" class="btn btn-default btn-lg style-button">{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.next' | translate}}<span class="glyphicon glyphicon-menu-right"></span></a>
         </div>
