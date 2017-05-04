@@ -33,27 +33,39 @@
     }
   }
 
-  .right-buffer {
-    margin-right: 25px;
-  }
-
-  .style-button {
+  .style-button-next {
     color: @onboarding-next-button-color;
     margin-right: 10px;
     background-color: @onboarding-next-button-color-background;
     background-image: linear-gradient(to bottom, transparent, transparent);
-    border-color: transparent transparent transparent;
+    border-color: @onboarding-next-button-color;
+    box-shadow: 1px 1px;
   }
 
-  .style-button:hover {
+  .style-button-next:hover {
     color: darken(@onboarding-next-button-color,10%);
     background-color: darken(@onboarding-next-button-color-background,10%);
     background-image: linear-gradient(to bottom, transparent, transparent);
-    border-color: transparent transparent transparent;
+    border-color: @onboarding-next-button-color;
+    box-shadow: 1px 1px;
+
   }
 
-  .move-right {
-    padding-right: 0px;
+  .style-button-finish {
+    color: @onboarding-finish-button-color;
+    margin-right: 10px;
+    background-color: @onboarding-finish-button-color-background;
+    background-image: linear-gradient(to bottom, transparent, transparent);
+    border-color: @onboarding-finish-button-color;
+    box-shadow: 1px 1px;
+  }
+
+  .style-button-finish:hover {
+    color: darken(@onboarding-finish-button-color,10%);
+    background-color: darken(@onboarding-finish-button-color-background,10%);
+    background-image: linear-gradient(to bottom, transparent, transparent);
+    border-color: @onboarding-finish-button-color;
+    box-shadow: 1px 1px;
   }
 
   .steps-indicator {
