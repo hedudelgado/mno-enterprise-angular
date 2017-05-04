@@ -6,6 +6,7 @@ angular.module 'mnoEnterpriseAngular'
     vm.numberOfAppsConnected = 0
     vm.areAppsConnected = false
 
+    # TODO
     # This is a temporal solution for a conflict on the layout css with the onboarding
     angular.element( document.querySelector( '.myspace' ) ).addClass('onboarding-helper')
     
