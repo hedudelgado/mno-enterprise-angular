@@ -70,9 +70,9 @@ angular.module 'mnoEnterpriseAngular'
       .state 'onboarding.email-me',
         data:
           pageTitle:'Email-me'
-        url: '/emailme'
-        templateUrl: 'app/views/onboarding/emailme/emailme.html'
-        controller: 'emailmeCtrl'
+        url: '/email-me'
+        templateUrl: 'app/views/onboarding/email-me/email-me.html'
+        controller: 'emailMeCtrl'
         controllerAs: 'vm'
 
     if MARKETPLACE_CONFIG.enabled

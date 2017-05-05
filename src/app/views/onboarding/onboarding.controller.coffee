@@ -6,6 +6,7 @@ angular.module 'mnoEnterpriseAngular'
     vm.numberOfAppsConnected = 0
     vm.areAppsConnected = false
     vm.goToDashboard = false
+    vm.isWizardShown = true
     # TODO
     # This is a temporal solution for a conflict on the layout css with the onboarding
     angular.element( document.querySelector( '.myspace' ) ).addClass('onboarding-helper')
@@ -33,7 +34,7 @@ angular.module 'mnoEnterpriseAngular'
       angular.element( document.querySelector( '.myspace' ) ).removeClass('onboarding-helper')
     
     vm.finishedWizard = () ->
-      setTimeout 3000
+      vm.isWizardShown = false
       if vm.goToDashboard
         WizardHandler.wizard().finish()
         $state.go('home.impac')

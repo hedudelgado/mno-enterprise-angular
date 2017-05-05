@@ -1,5 +1,5 @@
 angular.module 'mnoEnterpriseAngular'
-  .controller('emailmeCtrl',() ->
+  .controller('emailMeCtrl',() ->
     vm = this
     return
   )

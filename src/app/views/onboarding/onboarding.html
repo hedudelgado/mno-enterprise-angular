@@ -1,5 +1,6 @@
 <div id="wizard">
-  <div class="main-box">
+  <div ui-view></div>
+  <div class="main-box" ng-show='vm.isWizardShown'>
     <wizard on-finish="">
       <wz-step wz-title="{{ 'mno_enterprise.templates.onboarding.welcome' | translate }}">
         <mno-welcome-wizard></mno-welcome-wizard>
