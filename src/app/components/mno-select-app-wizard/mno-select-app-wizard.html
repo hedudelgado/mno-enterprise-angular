@@ -4,7 +4,7 @@
       <div class="recommendation-sentence" ng-show="isRecommendationShown">{{ 'mno_enterprise.templates.onboarding.select_your_app.we_recommend' | translate }}</div>
       <mno-widget>
         <mno-widget-header>
-          <input type="text" ng-model="searchTerm.name" placeholder="{{ 'mno_enterprise.templates.onboarding.select_your_app.search' | translate }}" class="form-control input-sm search-bar" ng-change="selectedCategory.category = ''">
+          <input type="text" ng-model="searchTerm.name" placeholder="&#xF002; {{ 'mno_enterprise.templates.onboarding.select_your_app.search' | translate }}" class="form-control input-sm search-bar" ng-change="selectedCategory.category = ''">
           <select class="pull-left form-control element-left search-bar" ng-model="selectedCategory.category" ng-options="c for c in categories" ng-change="searchTerm.name = ''">
             <option value=''>{{ 'mno_enterprise.templates.onboarding.select_your_app.categories' | translate }}</option>
           </select>
@@ -19,12 +19,12 @@
                 </div>
                 <img class="app-logo img-thumbnail" ng-src="{{trustSrc(app.logo)}}" alt="{{'mno_enterprise.templates.onboarding.select_your_app.app_logo' | translate:{'app': app.name} }}"" title="{{::app.tiny_description}}">
               </div>
-              <button type="button" class="pull-right info-btn" ng-click="openInfoModal(app)" ng-show="isInfoShown(app)">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </button>
-              <div class="pull-left app-title">
+              <div class="text-center app-title">
                 {{app.name}}
               </div>
+              <button type="button" class="info-btn" ng-click="openInfoModal(app)" ng-show="isInfoShown(app)">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </button>
             </div>
           </div>
         </mno-widget-body>

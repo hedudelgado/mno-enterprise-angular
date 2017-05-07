@@ -36,7 +36,7 @@ angular.module 'mnoEnterpriseAngular'
           app.isInfoButtonShown = false
         
         $scope.isInfoShown = (app) ->
-          app.isInfoButtonShown && !app.checked
+          app.isInfoButtonShown
 
         # ====================================
         # Info modal

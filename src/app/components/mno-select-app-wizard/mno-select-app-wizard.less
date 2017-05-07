@@ -2,6 +2,11 @@
   min-height: 80%;
   max-height: 80%;
   min-width: 90%;
+  
+  //  this bit overwrite the mno-ui-element css for a better app display
+  mno-widget > .widget > .body mno-widget-body:not(.no-padding) {
+    display: inline;
+  }
 
   .select-app-marketplace {
     width: 99%;
@@ -12,6 +17,29 @@
 
     .input-sm {
       color: @onboarding-select-app-marketplace-search;
+    }
+
+    .search-bar {
+      border-radius: 5px;
+      font-size: 13px;
+      height: 34px;
+      padding: 6px 12px;
+      margin-right: 10px;
+    }
+
+    input {
+      padding:10px;
+      font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+    }
+
+    input.empty {
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
     }
 
     .element-left {
@@ -35,6 +63,7 @@
       .app-icon {
         max-width: 120px;
         margin: 10px;
+        position: relative;
 
         .app-icon-wrapper {
           position: relative;
@@ -59,8 +88,14 @@
         }
 
         .info-btn{
+          border-radius: 60px;
+          box-shadow: 0px 0px 2px @onboarding-select-app-marketplace-tile-icon-color;
+          font-size: 10px;
           border: none;
           background-color: transparent;
+          position: absolute;
+          bottom: 12px;
+          right: -12px;
         }
                 
         .app-title {
