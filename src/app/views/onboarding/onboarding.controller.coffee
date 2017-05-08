@@ -38,11 +38,11 @@ angular.module 'mnoEnterpriseAngular'
       if vm.goToDashboard
         WizardHandler.wizard().finish()
         $state.go('home.impac')
+        # This will delete the css class added to fix the conflict on the layout css with the onboarding
+        setTimeout vm.onboardingHelper, 3000
       else
         WizardHandler.wizard().finish()
         $state.go('onboarding.email-me')
-      # This will delete the css class added to fix the conflict on the layout css with the onboarding
-      setTimeout vm.onboardingHelper, 3000
 
     return
   )
