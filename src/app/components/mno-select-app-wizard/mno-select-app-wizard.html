@@ -4,10 +4,19 @@
       <div class="recommendation-sentence" ng-show="isRecommendationShown">{{ 'mno_enterprise.templates.onboarding.select_your_app.we_recommend' | translate }}</div>
       <mno-widget>
         <mno-widget-header>
-          <input type="text" ng-model="searchTerm.name" placeholder="&#xF002; {{ 'mno_enterprise.templates.onboarding.select_your_app.search' | translate }}" class="form-control input-sm search-bar" ng-change="selectedCategory.category = ''">
-          <select class="pull-left form-control element-left search-bar" ng-model="selectedCategory.category" ng-options="c for c in categories" ng-change="searchTerm.name = ''">
-            <option value=''>{{ 'mno_enterprise.templates.onboarding.select_your_app.categories' | translate }}</option>
-          </select>
+          <div class="row">
+            <div class="search-box col-xs-6">
+              <div class='input-group'>
+                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                <input type="text" ng-model="searchTerm.name" placeholder="{{ 'mno_enterprise.templates.onboarding.select_your_app.search' | translate }}" class="form-control" ng-change="selectedCategory.category = ''">
+              </div>
+            </div>
+            <div class="search-box col-xs-6">
+              <select class="form-control " ng-model="selectedCategory.category" ng-options="c for c in categories" ng-change="searchTerm.name = ''">
+                <option value=''>{{ 'mno_enterprise.templates.onboarding.select_your_app.categories' | translate }}</option>
+              </select>
+            </div>
+          </div>
         </mno-widget-header>
         <mno-widget-body>
           <mno-loader ng-show="isLoading" class="top-buffer-4"></mno-loader>
