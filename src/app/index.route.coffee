@@ -59,21 +59,13 @@ angular.module 'mnoEnterpriseAngular'
           templateUrl: 'app/views/onboarding/onboarding.html'
           controller: 'OnboardingCtrl'
           controllerAs: 'vm'
-    $stateProvider
-      .state 'onboarding',
-        data:
-          pageTitle:'Onboarding'
-        url: '/onboarding'
-        templateUrl: 'app/views/onboarding/onboarding.html'
-        controller: 'OnboardingCtrl'
-        controllerAs: 'vm'
-      .state 'onboarding.email-me',
-        data:
-          pageTitle:'Email-me'
-        url: '/email-me'
-        templateUrl: 'app/views/onboarding/email-me/email-me.html'
-        controller: 'emailMeCtrl'
-        controllerAs: 'vm'
+        .state 'onboarding.email-me',
+          data:
+            pageTitle:'Email-me'
+          url: '/email-me'
+          templateUrl: 'app/views/onboarding/email-me/email-me.html'
+          controller: 'emailMeCtrl'
+          controllerAs: 'vm'
 
     if MARKETPLACE_CONFIG.enabled
       $stateProvider
