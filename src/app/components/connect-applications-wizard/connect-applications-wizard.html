@@ -11,10 +11,10 @@
       </div>   
       <div class='text-center top-buffer-2'>
         <div class="menu-item" ng-hide="isLaunchHidden(app)">
-          <a class="btn btn-primary" ng-click="launchApp(app);">{{ 'mno_enterprise.templates.onboarding.connect_apps.launch_app' | translate }}</a>
+          <a class="btn connect-action" ng-click="launchApp(app);">{{ 'mno_enterprise.templates.onboarding.connect_apps.launch_app' | translate }}</a>
         </div>
         <div class="menu-item" ng-show="isOauthConnectBtnShown(app)">
-          <a class="btn btn-primary" ng-click="showConnectModal(app)">{{ 'mno_enterprise.templates.onboarding.connect_apps.connect' | translate }}</a>
+          <a class="btn connect-action" ng-click="showConnectModal(app)">{{ 'mno_enterprise.templates.onboarding.connect_apps.connect' | translate }}</a>
         </div>
       </div>
     </div>

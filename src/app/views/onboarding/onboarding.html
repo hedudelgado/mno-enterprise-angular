@@ -1,5 +1,5 @@
 <div id="wizard">
-  <div ui-view></div>
+  <div ui-view ng-show='!vm.isWizardShown'></div>
   <div class="main-box" ng-show='vm.isWizardShown'>
     <wizard on-finish="">
       <wz-step wz-title="{{ 'mno_enterprise.templates.onboarding.welcome' | translate }}">
@@ -31,12 +31,10 @@
         </div>
       </wz-step>
       <wz-step wz-title="{{'mno_enterprise.templates.onboarding.discover_your_account' | translate}}">
-        <div class="row">
-          <mno-end-wizard></mno-end-wizard>
-          <div class="text-center  top-buffer-4">
-            <input type="submit" class="btn btn-default btn-lg style-button-finish" ng-click='vm.waitForEmail()' wz-next value="{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.email_me' | translate}}"/></input>
-            <input type="submit" class="btn btn-default btn-lg style-button-finish" ng-click='vm.setGoToDashboard()' wz-next value="{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.take_me_to_the_account' | translate}}"/></input>
-          </div>
+        <mno-end-wizard></mno-end-wizard>
+        <div class="text-center top-buffer-2">
+          <input type="submit" class="btn btn-default btn-lg style-button-finish" ng-click='vm.waitForEmail()' wz-next value="{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.email_me' | translate}}"/></input>
+          <input type="submit" class="btn btn-default btn-lg style-button-finish" ng-click='vm.setGoToDashboard()' wz-next value="{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.take_me_to_the_account' | translate}}"/></input>
         </div>
       </wz-step>
     </wizard>

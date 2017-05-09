@@ -8,7 +8,7 @@ angular.module 'mnoEnterpriseAngular'
         isPanelShown: '='
       }
 
-      controller: ($scope, MnoeMarketplace, $sce, $uibModal) ->
+      controller: ($scope,$sce, $uibModal, MnoeMarketplace) ->
         $scope.selectedCategory = { category:'' }
         $scope.searchTerm = { name:'' }
         $scope.isLoading = true
