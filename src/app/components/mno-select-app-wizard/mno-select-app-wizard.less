@@ -7,13 +7,12 @@
   mno-widget > .widget > .body mno-widget-body:not(.no-padding) {
     display: inline;
   }
+  mno-widget > .widget > .body {
+    background-color: @onboarding-background;
+  }
 
   .select-app-marketplace {
     width: 99%;
-
-    .recommendation-sentence {
-      color: @onboarding-select-app-marketplace-warning-sentence-color;
-    }
 
     .search-box {
       max-width: 47%;
@@ -24,9 +23,10 @@
     .form-control {
       color: @onboarding-select-app-marketplace-search;
     }
-    
+
     .apps-container {
       display: flex;
+      background: @onboarding-background;
       flex-wrap: wrap;
 
       i.fa {

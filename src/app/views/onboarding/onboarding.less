@@ -12,8 +12,15 @@
     max-height: 80%;
     margin-top: -100px;
     background: @onboarding-background;
-    border: solid 1px black;
+    border: solid 1px @onboarding-border;
+    border-radius: @onboarding-border-corners;
     display: flex;
+
+    .recommendation-sentence {
+      color: @onboarding-select-app-marketplace-warning-sentence-color;
+      margin-bottom: 2px;
+      margin-left: 61px;
+    }
 
     & > div[on-finish] {
       display: flex;
@@ -101,7 +108,7 @@
   max-height: 90%;
   min-height: 90%;
   overflow: hidden;
-  background: @bg-on-bg-inverse-color;
+  background: @onboarding-background;
 
   .container-app-selection {
     float: left;

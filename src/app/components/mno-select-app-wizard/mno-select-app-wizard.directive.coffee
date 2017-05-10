@@ -59,8 +59,7 @@ angular.module 'mnoEnterpriseAngular'
         $scope.appForDataSync = (app) ->
           $scope.apps = _.map(_.filter($scope.appsMarketplace, {checked: true}))
           $scope.isPanelShown = $scope.apps.length > 0
-          $scope.isRecommendationShown = $scope.apps.length > 4
-
+          
         # ==================================
         # Retrieve apps for marketplace box
         # ==================================

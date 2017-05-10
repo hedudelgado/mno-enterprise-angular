@@ -1,5 +1,5 @@
 angular.module 'mnoEnterpriseAngular'
-  .controller('OnboardingCtrl',(MnoeOrganizations, $state, MnoeCurrentUser, WizardHandler) ->
+  .controller('OnboardingCtrl',(MnoeOrganizations, $state, $q, MnoeCurrentUser, MnoeAppInstances, WizardHandler) ->
     vm = this
     vm.appsSelected = []
     vm.areApps = false
@@ -10,19 +10,27 @@ angular.module 'mnoEnterpriseAngular'
     # TODO
     # This is a temporal solution for a conflict on the layout css with the onboarding
     angular.element( document.querySelector( '.myspace' ) ).addClass('onboarding-helper')
-    
+
+    vm.isRecommendationShown = ()->
+      vm.appsSelected.length > 4
+
     vm.canGoToNextStep = ()->
       (vm.appsSelected.length > 0 ) && (vm.appsSelected.length <= 4)
 
-    # This loop will create the app instances into the organization base on the apps selected
+    # This method will delete the organization app instances, and then create new app instances
     vm.purchaseApps = () ->
-      for app in vm.appsSelected
-        MnoeOrganizations.purchaseApp(app, MnoeOrganizations.selectedId).then( ->
-          vm.numberOfAppsConnected = vm.numberOfAppsConnected + 1
-          if vm.numberOfAppsConnected ==  vm.appsSelected.length
+      vm.areAppsConnected = false
+      MnoeAppInstances.getAppInstances().then( ->
+        apps = MnoeAppInstances.appInstances
+        terminateAppPromises = _.map(apps, (app)-> MnoeAppInstances.terminate(app.id) )
+        $q.all(terminateAppPromises).then(->
+          purchaseAppPromises = _.map(vm.appsSelected, (selectedApp)-> MnoeOrganizations.purchaseApp(selectedApp))
+          $q.all(purchaseAppPromises).then(->
             vm.areAppsConnected = true
           )
-    
+        )
+      )
+
     vm.setGoToDashboard = () ->
       vm.goToDashboard = true
       vm.finishedWizard()

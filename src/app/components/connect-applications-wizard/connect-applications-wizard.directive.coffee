@@ -13,6 +13,8 @@ angular.module 'mnoEnterpriseAngular'
         # Once the apps selected in the onboarding marketplace are added to the organization
         # it will retreive the app instances to connect them.
         $scope.$watch('areAppsPurchased', (finishAddingApps)->
+          $scope.apps = []
+          $scope.areAppsReady = false
           if finishAddingApps
             $scope.$watch MnoeOrganizations.getSelectedId, (val) ->
               if val?

@@ -13,6 +13,7 @@
           <div class="title">
             <h1>{{'mno_enterprise.templates.onboarding.select_your_app.select_application' | translate}}</h1>
           </div>
+          <div class="recommendation-sentence" ng-show="vm.isRecommendationShown()">{{ 'mno_enterprise.templates.onboarding.select_your_app.we_recommend' | translate }}</div>
           <div class="container-app-selection">
             <mno-select-app-wizard apps="vm.appsSelected" is-panel-shown="vm.areApps" ></mno-select-app-wizard>
           </div>
