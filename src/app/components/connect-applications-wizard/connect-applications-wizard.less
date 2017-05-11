@@ -1,0 +1,65 @@
+#connect-apps-panel {
+  min-height: 85%;
+  max-height: 85%;
+  min-width: 90%;
+  overflow: auto;
+    
+  .title {
+    font-weight: @onboarding-title-weight;
+    color: @onboarding-title-color; 
+  }
+
+  .apps-container {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-container {
+    flex-grow: 1;
+    width: 200px;
+    margin: 10px;
+
+    h4 {
+      color: @onboarding-connect-apps-app-name-color;
+      font-weight: @onboarding-connect-apps-app-name-weight;
+    }
+  }
+
+  img.media-object {
+    max-width: 140px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .connect-apps-wrap {
+    margin-top: 20px;
+  }
+
+  .table-bordered {
+    border: none; 
+  }
+
+  .bottom-align-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .data-sync-info {
+    overflow: auto;
+  }
+
+  .connect-action {
+    color: @text-inverse-strong-color;
+    background-color: @brand-warning;
+    border-color: @brand-warning;
+  }
+  
+  .connect-action:hover {
+    background-color: darken(@brand-warning, 10%);
+  }
+}

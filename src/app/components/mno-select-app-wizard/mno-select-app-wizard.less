@@ -1,0 +1,82 @@
+#select-app {
+  min-height: 80%;
+  max-height: 80%;
+  min-width: 90%;
+  
+  //  this bit overwrite the mno-ui-element css for a better app display
+  mno-widget > .widget > .body mno-widget-body:not(.no-padding) {
+    display: inline;
+  }
+  mno-widget > .widget > .body {
+    background-color: @onboarding-background;
+  }
+
+  .select-app-marketplace {
+    width: 99%;
+
+    .search-box {
+      max-width: 47%;
+      padding-left: 0px;
+      padding-right: 20px;
+    }
+
+    .form-control {
+      color: @onboarding-select-app-marketplace-search;
+    }
+
+    .apps-container {
+      display: flex;
+      background: @onboarding-background;
+      flex-wrap: wrap;
+
+      i.fa {
+        color: @onboarding-select-app-marketplace-tile-icon-color;
+      }
+
+      .app-icon {
+        max-width: 120px;
+        margin: 10px;
+        position: relative;
+
+        .app-icon-wrapper {
+          position: relative;
+
+          .app-logo {
+            width: 100%;
+          }
+
+          .checked {
+            position: absolute;
+            border-radius: 6px;
+            background-color: @onboarding-select-app-marketplace-tile-check-color;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            // Center the tick
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }      
+        }
+
+        .info-btn{
+          border-radius: 60px;
+          box-shadow: 0px 0px 2px @onboarding-select-app-marketplace-tile-icon-color;
+          font-size: 10px;
+          border: none;
+          background-color: #fff;
+          position: absolute;
+          bottom: 25px;
+          right: 1px;
+        }
+                
+        .app-title {
+          margin-top: 4px;
+          color: @onboarding-select-app-marketplace-tile-txt-color;
+          .ellipsis;
+        }
+      }
+    }
+  }
+}

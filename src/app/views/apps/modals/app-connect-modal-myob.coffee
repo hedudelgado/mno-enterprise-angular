@@ -10,7 +10,10 @@ angular.module 'mnoEnterpriseAngular'
   $scope.versions = [{name: "Account Right Live", value: "account_right"}, {name: "Essentials", value: "essentials"}]
 
   $scope.connect = (form) ->
-    $window.location.href = $scope.path + $httpParamSerializer(form)
+    if ONBOARDING_WIZARD_CONFIG.enabled
+      $window.open($scope.path + $httpParamSerializer(form))
+    else
+      $window.location.href = $scope.path + $httpParamSerializer(form)
 
   $scope.close = ->
     $uibModalInstance.close()

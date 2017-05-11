@@ -1,0 +1,43 @@
+<div id="wizard">
+  <div ui-view ng-show='!vm.isWizardShown'></div>
+  <div class="main-box" ng-show='vm.isWizardShown'>
+    <wizard on-finish="">
+      <wz-step wz-title="{{ 'mno_enterprise.templates.onboarding.welcome' | translate }}">
+        <mno-welcome-wizard></mno-welcome-wizard>
+        <div class="text-right">
+          <a href="#" wz-next class="btn btn-default btn-lg style-button-next">{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.next' | translate}}<span class="glyphicon glyphicon-menu-right"></span></a>
+        </div>
+      </wz-step>
+      <wz-step canexit="vm.canGoToNextStep()" wz-title="{{'mno_enterprise.templates.onboarding.select_application_step_bar' | translate}}">
+        <div id="container-select-app">
+          <div class="title">
+            <h1>{{'mno_enterprise.templates.onboarding.select_your_app.select_application' | translate}}</h1>
+          </div>
+          <div class="recommendation-sentence" ng-show="vm.isRecommendationShown()">{{ 'mno_enterprise.templates.onboarding.select_your_app.we_recommend' | translate }}</div>
+          <div class="container-app-selection">
+            <mno-select-app-wizard apps="vm.appsSelected" is-panel-shown="vm.areApps" ></mno-select-app-wizard>
+          </div>
+          <div class="container-data-sync">
+            <mno-data-sync apps="vm.appsSelected" is-panel-shown="vm.areApps"></mno-data-sync>
+          </div>    
+        </div>
+        <div class="text-right">
+          <a href="#" wz-next="vm.purchaseApps()" ng-disabled="!vm.canGoToNextStep()" tooltip-enable="!vm.canGoToNextStep()" uib-tooltip="{{ 'mno_enterprise.templates.onboarding.select_your_app.min_apps' | translate }}" class="btn btn-default btn-lg style-button-next">{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.next' | translate}}<span class="glyphicon glyphicon-menu-right"></span></a>
+        </div>
+      </wz-step>
+      <wz-step wz-title="{{'mno_enterprise.templates.onboarding.connect_app' | translate}}">
+        <connect-applications-wizard are-apps-purchased="vm.areAppsConnected"></connect-applications-wizard>
+        <div class="text-right">
+          <a href="#" wz-next ng-show="vm.areAppsConnected" class="btn btn-default btn-lg style-button-next">{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.next' | translate}}<span class="glyphicon glyphicon-menu-right"></span></a>
+        </div>
+      </wz-step>
+      <wz-step wz-title="{{'mno_enterprise.templates.onboarding.discover_your_account' | translate}}">
+        <mno-end-wizard></mno-end-wizard>
+        <div class="text-center top-buffer-2">
+          <input type="submit" class="btn btn-default btn-lg style-button-finish" ng-click='vm.waitForEmail()' wz-next value="{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.email_me' | translate}}"/></input>
+          <input type="submit" class="btn btn-default btn-lg style-button-finish" ng-click='vm.setGoToDashboard()' wz-next value="{{'mno_enterprise.templates.onboarding.mno_welcome_wizard.take_me_to_the_account' | translate}}"/></input>
+        </div>
+      </wz-step>
+    </wizard>
+  </div>
+</div>

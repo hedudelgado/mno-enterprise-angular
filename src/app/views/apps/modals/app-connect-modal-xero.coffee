@@ -1,5 +1,5 @@
 angular.module 'mnoEnterpriseAngular'
-.controller('DashboardAppConnectXeroModalCtrl', ($scope, $window, $httpParamSerializer, $uibModalInstance, app) ->
+.controller('DashboardAppConnectXeroModalCtrl', ($scope, $window, $httpParamSerializer, $uibModalInstance, app, MnoeCurrentUser, ONBOARDING_WIZARD_CONFIG) ->
 
   $scope.app = app
   $scope.path = "/mnoe/webhook/oauth/" + app.uid + "/authorize?"
@@ -11,7 +11,12 @@ angular.module 'mnoEnterpriseAngular'
 
   $scope.connect = (form) ->
     form['extra_params[]'] = "payroll" if $scope.payroll
-    $window.location.href = $scope.path + $httpParamSerializer(form)
+    # If Xero is being connected from the wizard and the user has not finished the onboarding wizard,
+    # it will open a new page in the browser, otherwise it will be in the same page
+    if ONBOARDING_WIZARD_CONFIG.enabled
+      $window.open($scope.path + $httpParamSerializer(form))
+    else
+      $window.location.href = $scope.path + $httpParamSerializer(form)
 
   $scope.close = ->
     $uibModalInstance.close()

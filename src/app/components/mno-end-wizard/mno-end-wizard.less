@@ -1,0 +1,35 @@
+#wizard-end{
+  min-height: 85%;
+  max-height: 85%;
+  min-width: 90%;
+  overflow: auto;
+
+  .title {
+    font-weight: @onboarding-title-weight;
+    color: @onboarding-title-color; 
+  }
+
+  .center-paragraph {
+    color: @onboarding-txt-color;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .text-center-left-align {
+    color: @onboarding-txt-color;
+    text-align: left;
+    font-size: 14px;
+    padding-left: 30%;
+    padding-right: 15%;
+  }
+
+  ul {
+    list-style-type: none;
+    line-height: 25px;
+  }
+
+  ul li:before {
+    content: '\2013';
+    position: absolute;
+    margin-left: -10px;
+  }
+}

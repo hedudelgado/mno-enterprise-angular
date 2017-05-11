@@ -1,0 +1,50 @@
+#welcome{
+  min-height: 85%;
+  max-height: 85%;
+  min-width: 90%;
+  overflow: auto;
+
+  .number-circle {
+    border-radius: 50%;
+    width: 43px;
+    height: 43px;
+    padding: 8px;
+    background: #fff;
+    border: 2px solid @onboarding-welcome-number-border-color;
+    color: @onboarding-welcome-number-color;
+    text-align: center;
+    font: 20px Arial, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+  }
+  
+  .steps {
+    display: inline-block;
+    font-weight: @onboarding-welcome-steps-weight; 
+    color: @onboarding-welcome-steps-color;
+    padding-left: 5px;
+  }
+
+  .title {
+    font-weight: @onboarding-title-weight;
+    color: @onboarding-title-color; 
+  }
+
+  .centered {
+    display: table;
+    table-layout: fixed;
+  }
+
+  .center-paragraph {
+    color: @onboarding-txt-color;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .content {
+    position: relative;
+    left:40%;
+  }
+}

@@ -1,0 +1,42 @@
+<div id="select-app">
+  <div class="select-app-marketplace">
+    <div class="row">
+      <mno-widget>
+        <mno-widget-header>
+          <div class="row">
+            <div class="search-box col-xs-6">
+              <div class='input-group'>
+                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                <input type="text" ng-model="searchTerm.name" placeholder="{{ 'mno_enterprise.templates.onboarding.select_your_app.search' | translate }}" class="form-control" ng-change="selectedCategory.category = ''">
+              </div>
+            </div>
+            <div class="search-box col-xs-6">
+              <select class="form-control " ng-model="selectedCategory.category" ng-options="c for c in categories" ng-change="searchTerm.name = ''">
+                <option value=''>{{ 'mno_enterprise.templates.onboarding.select_your_app.categories' | translate }}</option>
+              </select>
+            </div>
+          </div>
+        </mno-widget-header>
+        <mno-widget-body>
+          <mno-loader ng-show="isLoading" class="top-buffer-4"></mno-loader>
+          <div class="apps-container">
+            <div class="app-icon" ng-mouseover="hoverIn(app)" ng-mouseleave="hoverOut(app)" ng-repeat="app in appsMarketplace | filter:appsFilter | filter:{name: searchTerm.name}">
+              <div class="app-icon-wrapper" ng-click="toggleApp(app)">
+                <div class="checked" ng-show="app.checked">
+                  <i class="fa fa-check fa-5x"></i>
+                </div>
+                <img class="app-logo img-thumbnail" ng-src="{{trustSrc(app.logo)}}" alt="{{'mno_enterprise.templates.onboarding.select_your_app.app_logo' | translate:{'app': app.name} }}"" title="{{::app.tiny_description}}">
+              </div>
+              <div class="text-center app-title">
+                {{app.name}}
+              </div>
+              <button type="button" class="info-btn" ng-click="openInfoModal(app)" ng-show="isInfoShown(app)">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </mno-widget-body>
+      </mno-widget>
+    </div>
+  </div>
+</div>

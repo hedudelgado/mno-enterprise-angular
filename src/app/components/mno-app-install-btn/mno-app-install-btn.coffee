@@ -4,7 +4,7 @@ angular.module 'mnoEnterpriseAngular'
       app: '='
     },
     templateUrl: 'app/components/mno-app-install-btn/mno-app-install-btn.html',
-    controller: ($q, $state, $window, $uibModal, toastr, MnoeMarketplace, MnoeCurrentUser, MnoeOrganizations, MnoeAppInstances) ->
+    controller: ($q, $state, $window, $uibModal, toastr, MnoeMarketplace, MnoeCurrentUser, MnoeOrganizations, MnoeAppInstances, ONBOARDING_WIZARD_CONFIG) ->
       vm = this
 
       # Return the different status of the app regarding its installation
@@ -32,7 +32,6 @@ angular.module 'mnoEnterpriseAngular'
         return if !vm.canProvisionApp
         vm.isLoadingButton = true
         MnoeAppInstances.clearCache()
-
         # Get the authorization status for the current organization
         if MnoeOrganizations.role.atLeastAdmin(vm.user_role)
           purchasePromise = MnoeOrganizations.purchaseApp(vm.app, MnoeOrganizations.selectedId)
@@ -41,7 +40,10 @@ angular.module 'mnoEnterpriseAngular'
 
         purchasePromise.then(
           ->
-            $state.go('home.impac')
+            # If the wizard is enabled and has not been completed it will not redirect to impac
+            # for the wizard to be completed.
+            unless ONBOARDING_WIZARD_CONFIG.enabled
+              $state.go('home.impac')
 
             switch vm.app.stack
               when 'cloud' then displayLaunchToastr(vm.app)
@@ -51,7 +53,12 @@ angular.module 'mnoEnterpriseAngular'
                   displayLaunchToastr(vm.app)
                 else
                   displayConnectToastr(vm.app)
-        ).finally(-> vm.isLoadingButton = false)
+        ).finally(->
+          vm.isLoadingButton = false
+          # If the wizard is enabled
+          if ONBOARDING_WIZARD_CONFIG.enabled
+            openConnectAppModal()
+        )
 
       displayLaunchToastr = (app) ->
         toastr.success(
@@ -65,6 +72,18 @@ angular.module 'mnoEnterpriseAngular'
           'mno_enterprise.templates.components.app_install_btn.success_connect_notification_body',
           'mno_enterprise.templates.components.app_install_btn.success_notification_title',
           {extraData: {name: app.name}, timeout: 10000}
+        )
+
+      openConnectAppModal = () ->
+        vm.showConnectButtons = true
+        $uibModal.open(
+          templateUrl: 'app/views/onboarding/modals/mno-app-info.html'
+          controller: 'MnoAppInfoCtrl'
+          controllerAs: 'vm',
+          size: 'lg'
+          resolve:
+            showConnectButtons: vm.showConnectButtons
+            app: vm.app
         )
 
       openChooseOrgaModal = () ->

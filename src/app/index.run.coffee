@@ -99,3 +99,8 @@ angular.module 'mnoEnterpriseAngular'
         $rootScope.hasNoOrganisations = true
     )
   )
+  # Check the status the onboarding wizard's status, if it is not finished it wil redirect to the onboarding slider
+  .run(($location, MnoeCurrentUser, ONBOARDING_WIZARD_CONFIG) ->
+    if ONBOARDING_WIZARD_CONFIG.enabled
+      $location.path( "/onboarding" )
+  )
