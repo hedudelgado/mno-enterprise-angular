@@ -51,7 +51,7 @@
     "moment": {
       "main": [
         "moment.js",
-        "locale/id.js"
+        "locale/id.js",
         "locale/zh-cn.js"
       ]
     }
