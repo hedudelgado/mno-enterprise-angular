@@ -1,5 +1,5 @@
 angular.module 'mnoEnterpriseAngular'
-  .controller 'IndexController', ($scope, $sce, GOOGLE_TAG_CONTAINER_ID, INTERCOM_ID) ->
+  .controller 'IndexController', ($scope, $sce, GOOGLE_TAG_CONTAINER_ID, INTERCOM_ID, AnalyticsSvc) ->
     'ngInject'
 
     $scope.google_tag_scripts = $sce.trustAsHtml("""
@@ -15,18 +15,37 @@ angular.module 'mnoEnterpriseAngular'
             })(window,document,'script','dataLayer', '#{GOOGLE_TAG_CONTAINER_ID}');
         <\/script>
     """)if GOOGLE_TAG_CONTAINER_ID?
+    
+    # It will load the library only if INTERCOM_ID is provided
+    angular.element(document).ready(-> addIntercom() if INTERCOM_ID)
 
-    $scope.intercom = $sce.trustAsHtml("""
-        <script id="IntercomSettingsScriptTag">
-          window.intercomSettings = {"widget": {"activator": "#IntercomDefaultWidget"}}
-        </script>
-        <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');
-          ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];
-          i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');
-          s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/#{INTERCOM_ID}';
-          var x=d.getElementsByTagName('script')[0];
-          x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
-        </script>
-    """)if INTERCOM_ID?
+    # This is the intercom code translated to coffee and slightly modified to
+    # load dinamically the library.
+    addIntercom = () ->
+      w = window
+      w.intercomSettings = 'widget': 'activator': '#IntercomDefaultWidget'
+      i = ->
+        i.c arguments
+        return
+      i.q = []
+      i.c = (args) ->
+        i.q.push args
+        return
+      w.Intercom = i
+      d = document
+      s = d.createElement('script')
+      s.type = 'text/javascript'
+      s.async = true
+      s.src = 'https://widget.intercom.io/widget/' + INTERCOM_ID
+      x = d.getElementsByTagName('script')[0]
+      x.parentNode.insertBefore s, x
+
+      s.onload = () ->
+        ic = w.Intercom
+        ic 'reattach_activator'
+        ic 'update', intercomSettings
+      # We make sure the intercom boot happens after we have the intercom loaded
+      AnalyticsSvc.init()
+      return
 
     return

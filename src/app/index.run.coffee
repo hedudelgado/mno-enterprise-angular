@@ -64,7 +64,6 @@ angular.module 'mnoEnterpriseAngular'
   )
 
   .run(($rootScope, $timeout, AnalyticsSvc) ->
-    $timeout ( -> AnalyticsSvc.init() )
 
     $rootScope.$on('$stateChangeSuccess', ->
       AnalyticsSvc.update()
